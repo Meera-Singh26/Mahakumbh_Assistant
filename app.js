@@ -1,6 +1,4 @@
-// ==========================================
-// STATE MANAGEMENT & TRANSLATION DICTIONARY
-// ==========================================
+
 let currentLanguage = 'en';
 let currentSubTab = 'mela-map';
 let isSirenPlaying = false;
@@ -963,9 +961,7 @@ const i18n = {
     }
 };
 
-// ==========================================
-// CONNECTIVITY DATA & ROUTING STEPS
-// ==========================================
+
 const transitRoutes = {
     station_pryj: {
         sector1: {
@@ -1376,9 +1372,7 @@ const fallbackResponses = {
     mr: "मी मदतीसाठी तयार आहे! आपण 'राहण्याची सोय', 'स्नान तारखा', किंवा 'मेळाव्यात कसे पोहोचायचे' याबद्दल विचारू शकता।"
 };
 
-// ==========================================
-// APP LIFE CYCLE & CORE INITIALIZATION
-// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
     updateLanguageUI();
     renderCalendar();
@@ -1494,9 +1488,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ==========================================
-// TRANSLATION ENGINE & HELPER FUNCTIONS
-// ==========================================
+
 function translatePage() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -1526,9 +1518,6 @@ function showLocalNotification(message) {
     }, 100);
 }
 
-// ==========================================
-// TAB SWITCHING NAVIGATION CONTROL
-// ==========================================
 function switchTab(tabName) {
     document.querySelectorAll('.nav-section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -1585,9 +1574,7 @@ function startCountdown() {
     }, 1000);
 }
 
-// ==========================================
-// DYNAMIC COMPONENT RENDERERS
-// ==========================================
+
 function renderCalendar() {
     const calendarList = document.getElementById('calendarList');
     calendarList.innerHTML = '';
@@ -1705,9 +1692,7 @@ function focusServiceOnMap(pinId) {
     }
 }
 
-// ==========================================
-// WITHIN-MELA PATH ROUTER (SVG)
-// ==========================================
+
 function calculateAndDrawRoute() {
     const startVal = document.getElementById('routeStart').value;
     const endVal = document.getElementById('routeEnd').value;
@@ -1776,10 +1761,6 @@ function calculateCityTransit() {
     resultsPanel.classList.remove('hidden');
     speakText(`Transit route calculated. Mode: ${route.modeEn}. Time: ${route.timeEn}.`);
 }
-
-// ==========================================
-// SANGAM AI CHAT & KEYWORD INTELLIGENCE
-// ==========================================
 function handleChatSendMessage() {
     const chatInput = document.getElementById('chatInput');
     const query = chatInput.value.trim();
@@ -1854,9 +1835,7 @@ function queryChatbotNLP(query) {
     return { response: fallbackResponses[currentLanguage] || fallbackResponses['en'], action: null };
 }
 
-// ==========================================
-// VOICE SYNTHESIS & RECOGNITION (SPEECH API)
-// ==========================================
+
 function setupVoiceEngine() {
     if ('speechSynthesis' in window) {
         window.speechSynthesis.getVoices();
