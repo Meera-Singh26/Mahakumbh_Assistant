@@ -1,10 +1,10 @@
- KumbhSathi AI - Mahakumbh Pilgrim Assistant
+ **KumbhSathi AI - Mahakumbh Pilgrim Assistant**
 
 Live Demo: [mahakumbhassistant.vercel.app](https://mahakumbhassistant.vercel.app)
 
 A comprehensive digital assistant for pilgrims attending the Mahakumbh festival. Provides real-time information on transportation, accommodation, medical facilities, sacred bathing dates, and AI-powered guidance.
 
- Core Features
+** Core Features**
  1. Transport Routes & Navigation
 - **3 Major Routes**: Railway Station → Sangam Ghat | Civil Lines → Arail Ghat | Airport → Mela Ground
 - **Distance & Duration**: Real-time travel time estimates
@@ -75,7 +75,7 @@ Respects Motion Preferences
 - Fast load times (<2 seconds)
 
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 | Component | Technology |
 |-----------|-----------|
@@ -94,8 +94,8 @@ Respects Motion Preferences
 - **Bundle Size**: ~600KB (gzipped)
 - **Initial Load**: <2 seconds
 - **Lighthouse Score**: 95+
-- **Mobile Friendly**: ✅ Fully Responsive
-- **SEO Optimized**: ✅ Meta tags, structured data
+- **Mobile Friendly**: Fully Responsive
+- **SEO Optimized**:  Meta tags, structured data
 
 
 ##  Deployment
@@ -225,7 +225,7 @@ Contributions welcome! Please:
 
 
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 Designed with reverence for pilgrims attending Mahakumbh. Built to bridge technology and tradition, making the sacred journey accessible to all.
 
