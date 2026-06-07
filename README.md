@@ -227,4 +227,4 @@ Contributions welcome! Please:
 
 Designed with reverence for pilgrims attending Mahakumbh. Built to bridge technology and tradition, making the sacred journey accessible to all.
 
-**KumbhSathi AI** - Your Digital Companion for the Sacred Pilgrimage 🪔
+**KumbhSathi AI** - Your Digital Companion for the Sacred Pilgrimage 
