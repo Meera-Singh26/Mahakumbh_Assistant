@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SangamSathi | Mahakumbh 2028 Pilgrim Assistant</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-om logo-pulse"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>SangamSathi</h1>
+                    <span data-i18n="tagline">Mahakumbh 2028 Assistant</span>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <div class="language-dropdown">
+                    <button class="lang-btn" id="langBtn">
+                        <i class="fa-solid fa-language"></i>
+                        <span id="currentLang">English</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-options" id="langOptions">
+                        <div class="lang-opt active" data-lang="en">English</div>
+                        <div class="lang-opt" data-lang="hi">हिंदी (Hindi)</div>
+                        <div class="lang-opt" data-lang="bn">বাংলা (Bengali)</div>
+                        <div class="lang-opt" data-lang="te">తెలుగు (Telugu)</div>
+                        <div class="lang-opt" data-lang="ta">தமிழ் (Tamil)</div>
+                        <div class="lang-opt" data-lang="gu">ગુજરાતી (Gujarati)</div>
+                        <div class="lang-opt" data-lang="mr">मराठी (Marathi)</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Live Advisory Ticker -->
+        <div class="advisory-ticker">
+            <div class="ticker-label">
+                <i class="fa-solid fa-circle-exclamation"></i> <span data-i18n="ticker_alert">ALERT</span>
+            </div>
+            <div class="ticker-content">
+                <div class="ticker-text" id="tickerText" data-i18n="ticker_message">
+                    🔴 Live: Makar Sankranti Shahi Snan guidelines released. Sector 4 bridge one-way only between 4 AM and 10 AM. Lost & Found booth Sector 11 reports 14 reunions today.
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            
+            <!-- SECTION 1: HOME/DASHBOARD -->
+            <section id="section-dashboard" class="nav-section active">
+                <div class="welcome-card glass-panel">
+                    <div class="welcome-text">
+                        <h2 data-i18n="welcome_title">Welcome to Prayagraj</h2>
+                        <p data-i18n="welcome_desc">Your spiritual journey companion for the holy Mahakumbh Mela 2028.</p>
+                    </div>
+                    <div class="sector-indicator">
+                        <span class="label" data-i18n="your_location">Estimated Location</span>
+                        <div class="value">
+                            <i class="fa-solid fa-location-crosshairs text-primary"></i>
+                            <span id="currentSectorText" data-i18n="sector_location">Sector 4 (Akhara Region)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Status Row -->
+                <div class="status-grid">
+                    <div class="status-card glass-panel">
+                        <div class="card-icon col-orange">
+                            <i class="fa-solid fa-cloud-sun"></i>
+                        </div>
+                        <div class="card-details">
+                            <span class="label" data-i18n="weather_title">Weather & AQI</span>
+                            <span class="value">24°C • <span class="badge badge-green" data-i18n="aqi_good">Good (68)</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="status-card glass-panel">
+                        <div class="card-icon col-red">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="card-details">
+                            <span class="label" data-i18n="crowd_status">Sangam Density</span>
+                            <span class="value" id="crowdDensityStatus" data-i18n="crowd_moderate">Moderate (Yellow)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Snan Countdown -->
+                <div class="countdown-card glass-panel">
+                    <h3 data-i18n="countdown_title">Next Major Snan (Holy Bath)</h3>
+                    <div class="snan-name" data-i18n="next_snan_name">Makar Sankranti (First Shahi Snan)</div>
+                    <div class="snan-date" data-i18n="next_snan_date">January 14, 2028</div>
+                    <div class="timer-display" id="snanCountdown">
+                        <div class="time-block">
+                            <span class="num" id="days">--</span>
+                            <span class="label" data-i18n="days">Days</span>
+                        </div>
+                        <div class="time-block">
+                            <span class="num" id="hours">--</span>
+                            <span class="label" data-i18n="hours">Hrs</span>
+                        </div>
+                        <div class="time-block">
+                            <span class="num" id="minutes">--</span>
+                            <span class="label" data-i18n="minutes">Mins</span>
+                        </div>
+                        <div class="time-block">
+                            <span class="num" id="seconds">--</span>
+                            <span class="label" data-i18n="seconds">Secs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Action Hub -->
+                <div class="section-title">
+                    <h3 data-i18n="quick_actions">Quick Navigation Hub</h3>
+                </div>
+                <div class="quick-grid">
+                    <button class="quick-btn glass-panel" onclick="switchTab('map')">
+                        <i class="fa-solid fa-map-location-dot col-orange"></i>
+                        <span data-i18n="qa_map">Mela Map & Route</span>
+                    </button>
+                    <button class="quick-btn glass-panel" onclick="switchTab('chat')">
+                        <i class="fa-solid fa-comments col-teal"></i>
+                        <span data-i18n="qa_assistant">Sangam AI Chat</span>
+                    </button>
+                    <button class="quick-btn glass-panel" onclick="switchTab('calendar')">
+                        <i class="fa-solid fa-calendar-days col-purple"></i>
+                        <span data-i18n="qa_snan">Snan Dates</span>
+                    </button>
+                    <button class="quick-btn glass-panel" onclick="switchTab('services')">
+                        <i class="fa-solid fa-hand-holding-heart col-blue"></i>
+                        <span data-i18n="qa_services">Services Directory</span>
+                    </button>
+                </div>
+
+                <!-- Important Notifications -->
+                <div class="notifications-panel glass-panel">
+                    <h4 data-i18n="updates_title">Updates & Guidelines</h4>
+                    <ul class="notification-list">
+                        <li>
+                            <i class="fa-solid fa-shield-halved text-primary"></i>
+                            <div>
+                                <strong data-i18n="nt_1_title">Security Checkpoints Active</strong>
+                                <p data-i18n="nt_1_desc">Keep your Aadhaar / Identity proof copy ready for verification at outer security cordons.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-droplet text-blue"></i>
+                            <div>
+                                <strong data-i18n="nt_2_title">Free Drinking Water</strong>
+                                <p data-i18n="nt_2_desc">Water taps available every 100 meters on Sector 3 Marg and Sector 4 Marg.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 2: SANGAM AI CHAT & VOICE -->
+            <section id="section-chat" class="nav-section">
+                <div class="chat-container glass-panel">
+                    <div class="chat-header">
+                        <div class="bot-info">
+                            <div class="bot-avatar">
+                                <i class="fa-solid fa-om"></i>
+                            </div>
+                            <div>
+                                <h3 data-i18n="chat_header_title">Sangam AI</h3>
+                                <span class="status-indicator online" data-i18n="chat_header_status">Online (Multi-Language)</span>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="icon-btn" id="ttsToggle" title="Toggle Text-to-Speech">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="msg bot-msg">
+                            <div class="msg-content">
+                                <p id="chatWelcomeText" data-i18n="chat_welcome_msg">Pranam! I am SangamSathi AI, your assistant for Mahakumbh 2028. You can type or tap the microphone to ask me questions in your language.</p>
+                            </div>
+                            <span class="msg-time">Just now</span>
+                        </div>
+                    </div>
+
+                    <div class="voice-wave-container" id="voiceWave">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <span data-i18n="listening">Listening... speak now</span>
+                    </div>
+
+                    <div class="chat-suggestions">
+                        <button class="suggest-btn" data-query="bathing dates" data-i18n="sg_bathing">📅 Bathing Dates</button>
+                        <button class="suggest-btn" data-query="emergency" data-i18n="sg_emergency">🚨 Emergency Contacts</button>
+                        <button class="suggest-btn" data-query="lost found" data-i18n="sg_lost">🔍 Lost & Found</button>
+                        <button class="suggest-btn" data-query="nearest medical" data-i18n="sg_medical">🏥 Medical Camp</button>
+                        <button class="suggest-btn" data-query="accommodation" data-i18n="fl_tents">🎪 Staying Options</button>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Ask in your selected language..." data-i18n-placeholder="chat_input_placeholder">
+                        <button class="voice-btn" id="voiceBtn" title="Speak to Assistant">
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+                        <button class="send-btn" id="sendBtn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: MAPS & TRANSIT NAVIGATOR -->
+            <section id="section-map" class="nav-section">
+                <!-- Navigation Sub-Tabs -->
+                <div class="sub-tabs-container">
+                    <button class="sub-tab active" id="tabMelaMap" onclick="switchSubTab('mela-map')">
+                        <i class="fa-solid fa-map-marked-alt"></i> <span data-i18n="subtab_mela">Mela Ground Map</span>
+                    </button>
+                    <button class="sub-tab" id="tabCityTransit" onclick="switchSubTab('city-transit')">
+                        <i class="fa-solid fa-train-subway"></i> <span data-i18n="subtab_city">City Connectivity</span>
+                    </button>
+                </div>
+
+                <!-- SUB-SECTION 3A: WITHIN MELA ROUTING -->
+                <div id="sub-section-mela-map" class="sub-section active">
+                    <div class="map-controls glass-panel">
+                        <h3 data-i18n="navigator_title">Mela Navigator</h3>
+                        <p data-i18n="navigator_desc">Draw routes and check distances between sectors and bathing ghats.</p>
+                        
+                        <div class="route-selectors">
+                            <div class="select-group">
+                                <label for="routeStart" data-i18n="route_start">Starting Point:</label>
+                                <select id="routeStart">
+                                    <option value="sector4" data-i18n="sec4_opt" selected>Sector 4 (Your Location)</option>
+                                    <option value="sector1" data-i18n="sec1_opt">Sector 1 (Entry Gates)</option>
+                                    <option value="sector8" data-i18n="sec8_opt">Sector 8 (Main Bus Stand)</option>
+                                    <option value="sector11" data-i18n="sec11_opt">Sector 11 (Railway Stn Camp)</option>
+                                    <option value="sector15" data-i18n="sec15_opt">Sector 15 (Akharas North)</option>
+                                </select>
+                            </div>
+                            <div class="select-group">
+                                <label for="routeEnd" data-i18n="route_end">Destination:</label>
+                                <select id="routeEnd">
+                                    <option value="sangam" data-i18n="sangam_opt" selected>Triveni Sangam Nose</option>
+                                    <option value="vip_ghat" data-i18n="vip_opt">VIP Bathing Ghat</option>
+                                    <option value="qila_ghat" data-i18n="qila_opt">Qila Bathing Ghat</option>
+                                    <option value="medical" data-i18n="med_opt">Central Hospital (Sec 8)</option>
+                                    <option value="lost_found" data-i18n="lost_opt">Lost & Found HQs (Sec 11)</option>
+                                    <option value="temple" data-i18n="temple_opt">Lying Hanuman Temple</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="route-actions">
+                            <button class="primary-btn btn-full" id="drawRouteBtn">
+                                <i class="fa-solid fa-route"></i> <span data-i18n="get_directions">Get Directions</span>
+                            </button>
+                        </div>
+
+                        <div class="route-details hidden" id="routeDetails">
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-person-walking text-primary"></i>
+                                    <div>
+                                        <span class="label" data-i18n="rt_distance">Distance</span>
+                                        <strong class="value" id="routeDistVal">1.2 km</strong>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-clock text-primary"></i>
+                                    <div>
+                                        <span class="label" data-i18n="rt_time">Walking Time</span>
+                                        <strong class="value" id="routeTimeVal">15 mins</strong>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-bridge-water text-primary"></i>
+                                    <div>
+                                        <span class="label" data-i18n="rt_crossings">Pontoon Crossings</span>
+                                        <strong class="value" id="routeCrossingsVal">1 Bridge</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="route-guidance">
+                                <i class="fa-solid fa-circle-info text-blue"></i>
+                                <span id="routeDirectionsText">Walk south along sector 4 main road, cross Pontoon Bridge 3, turn left onto Sangam Marg and proceed straight.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVG Map Canvas -->
+                    <div class="map-canvas-container glass-panel">
+                        <div class="map-legend">
+                            <span class="legend-item"><span class="legend-color water"></span> <span data-i18n="map_triveni_lbl">Sangam</span></span>
+                            <span class="legend-item"><span class="legend-color route"></span> <span data-i18n="qa_map">Route</span></span>
+                            <span class="legend-item"><span class="legend-color sector-marker"></span> <span data-i18n="sector_label">Sectors</span></span>
+                        </div>
+                        <div class="map-zoom-wrapper">
+                            <svg id="melaSvgMap" viewBox="0 0 800 600" class="mela-svg">
+                                <path d="M 0,200 Q 150,150 300,280 T 550,380 T 800,500 L 800,600 L 0,600 Z" class="svg-water ganga-river" />
+                                <path d="M 0,550 Q 250,580 480,480 T 550,380 Z" class="svg-water yamuna-river" />
+                                <circle cx="550" cy="380" r="45" class="svg-water-blend" />
+                                <text x="560" y="360" class="svg-text water-label" data-i18n="map_triveni_lbl">Triveni Sangam</text>
+
+                                <line x1="260" y1="230" x2="310" y2="280" class="svg-bridge" id="bridge-p1" />
+                                <text x="240" y="220" class="svg-text bridge-label" data-i18n="p1_lbl">Bridge 1</text>
+                                <line x1="450" y1="310" x2="480" y2="400" class="svg-bridge" id="bridge-p2" />
+                                <text x="410" y="340" class="svg-text bridge-label" data-i18n="p2_lbl">Bridge 2</text>
+
+                                <rect x="50" y="50" width="100" height="80" rx="10" class="svg-sector sector-card" id="sector-1" />
+                                <text x="100" y="95" class="svg-text sector-label" data-i18n="sec1_lbl">Sector 1 (Admin)</text>
+                                
+                                <rect x="220" y="80" width="120" height="90" rx="10" class="svg-sector sector-card" id="sector-4" />
+                                <circle cx="280" cy="125" r="10" class="pulse-ring" />
+                                <circle cx="280" cy="125" r="5" class="svg-user-dot" />
+                                <text x="280" y="145" class="svg-text sector-label bold" data-i18n="sec4_lbl">Sector 4 (You)</text>
+
+                                <rect x="420" y="60" width="110" height="90" rx="10" class="svg-sector sector-card" id="sector-8" />
+                                <text x="475" y="110" class="svg-text sector-label" data-i18n="sec8_lbl">Sector 8 (Hosp)</text>
+
+                                <rect x="620" y="100" width="120" height="95" rx="10" class="svg-sector sector-card" id="sector-11" />
+                                <text x="680" y="150" class="svg-text sector-label" data-i18n="sec11_lbl">Sector 11 (L&F)</text>
+                                
+                                <rect x="50" y="240" width="120" height="90" rx="10" class="svg-sector sector-card" id="sector-15" />
+                                <text x="110" y="290" class="svg-text sector-label" data-i18n="sec15_lbl">Sector 15 (Camp)</text>
+
+                                <circle cx="580" cy="400" r="8" class="svg-pin pin-ghat" id="pin-sangam" />
+                                <text x="600" y="405" class="svg-text landmark-label" data-i18n="pin_sangam_lbl">Sangam Nose</text>
+                                <circle cx="410" cy="270" r="8" class="svg-pin pin-ghat" id="pin-vip" />
+                                <text x="420" y="260" class="svg-text landmark-label" data-i18n="pin_vip_lbl">VIP Ghat</text>
+                                <circle cx="200" cy="480" r="8" class="svg-pin pin-ghat" id="pin-qila" />
+                                <text x="215" y="485" class="svg-text landmark-label" data-i18n="pin_qila_lbl">Qila Ghat</text>
+
+                                <circle cx="490" cy="115" r="8" class="svg-pin pin-hosp" id="pin-medical" />
+                                <circle cx="680" cy="115" r="8" class="svg-pin pin-lost" id="pin-lost_found" />
+                                <circle cx="340" cy="380" r="8" class="svg-pin pin-temple" id="pin-temple" />
+                                <text x="310" y="405" class="svg-text landmark-label" data-i18n="pin_temple_lbl">Hanuman Temple</text>
+
+                                <g class="svg-road-network">
+                                    <path d="M 280,125 L 280,250" class="svg-road" id="road-sec4-to-bridge" />
+                                    <path d="M 280,250 L 410,270" class="svg-road" id="road-bridge-to-vip" />
+                                    <path d="M 410,270 L 580,400" class="svg-road" id="road-vip-to-sangam" />
+                                    <path d="M 280,125 L 100,95" class="svg-road" id="road-sec4-to-sec1" />
+                                    <path d="M 280,125 L 475,110" class="svg-road" id="road-sec4-to-sec8" />
+                                    <path d="M 475,110 L 680,115" class="svg-road" id="road-sec8-to-sec11" />
+                                    <path d="M 680,115 L 580,400" class="svg-road" id="road-sec11-to-sangam" />
+                                    <path d="M 100,95 L 110,290" class="svg-road" id="road-sec1-to-sec15" />
+                                    <path d="M 110,290 L 200,480" class="svg-road" id="road-sec15-to-qila" />
+                                </g>
+                                <path d="" class="svg-active-route-path" id="activeRouteOverlay" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-SECTION 3B: OUT-OF-MELA CITY TRANSIT ROUTER -->
+                <div id="sub-section-city-transit" class="sub-section">
+                    <div class="transit-planner-card glass-panel">
+                        <h3 data-i18n="transit_planner_title">City-to-Mela Travel Planner</h3>
+                        <p data-i18n="transit_planner_desc">Plan your journey from major Airports, Railway Stations, or Parking Lots straight to the Mela gates.</p>
+                        
+                        <div class="route-selectors">
+                            <div class="select-group">
+                                <label for="transitStart" data-i18n="transit_origin">Starting Hub (City):</label>
+                                <select id="transitStart">
+                                    <option value="station_pryj" data-i18n="hub_pryj" selected>Prayagraj Junction Stn (PRYJ)</option>
+                                    <option value="station_sfg" data-i18n="hub_sfg">Subedarganj Station (SFG)</option>
+                                    <option value="station_pcoi" data-i18n="hub_pcoi">Prayagraj Cheoki Stn (PCOI)</option>
+                                    <option value="airport_ixd" data-i18n="hub_ixd">Prayagraj Airport (IXD)</option>
+                                    <option value="airport_vns" data-i18n="hub_vns">Varanasi Airport (VNS - 120km)</option>
+                                    <option value="airport_lko" data-i18n="hub_lko">Lucknow Airport (LKO - 200km)</option>
+                                    <option value="parking_jhunsi" data-i18n="hub_jhunsi">Jhunsi Mela Outer Parking</option>
+                                    <option value="parking_arail" data-i18n="hub_arail">Arail Mela Outer Parking</option>
+                                </select>
+                            </div>
+                            <div class="select-group">
+                                <label for="transitEnd" data-i18n="transit_dest">Mela Entry Sector:</label>
+                                <select id="transitEnd">
+                                    <option value="sector1" data-i18n="sec1_opt" selected>Sector 1 (Admin/Entry Gate)</option>
+                                    <option value="sector4" data-i18n="sec4_opt">Sector 4 (Akhara Region)</option>
+                                    <option value="sector8" data-i18n="sec8_opt">Sector 8 (Central Hospital)</option>
+                                    <option value="sector11" data-i18n="sec11_opt">Sector 11 (Railway Stn Camp)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="route-actions">
+                            <button class="primary-btn btn-full" id="calcTransitBtn">
+                                <i class="fa-solid fa-compass"></i> <span data-i18n="btn_plan_route">Calculate Route</span>
+                            </button>
+                        </div>
+
+                        <!-- Transit Plan Outputs -->
+                        <div class="transit-results-panel hidden" id="transitResults">
+                            <div class="transit-badges">
+                                <div class="badge-item">
+                                    <i class="fa-solid fa-van-shuttle text-primary"></i>
+                                    <div>
+                                        <span class="label" data-i18n="recommended_mode">Transport Mode</span>
+                                        <strong class="value" id="transitModeVal">Free Shuttle Bus</strong>
+                                    </div>
+                                </div>
+                                <div class="badge-item">
+                                    <i class="fa-solid fa-indian-rupee-sign text-primary"></i>
+                                    <div>
+                                        <span class="label" data-i18n="estimated_fare">Est. Cost</span>
+                                        <strong class="value" id="transitFareVal">Free</strong>
+                                    </div>
+                                </div>
+                                <div class="badge-item">
+                                    <i class="fa-solid fa-clock text-primary"></i>
+                                    <div>
+                                        <span class="label" data-i18n="rt_time">Duration</span>
+                                        <strong class="value" id="transitTimeVal">25 mins</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="transit-directions-box">
+                                <h4 data-i18n="step_by_step_heading">Route Instructions:</h4>
+                                <ol id="transitDirectionsSteps" class="transit-steps-list">
+                                    <!-- Populated by JS -->
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transit Info Cards -->
+                    <div class="section-title">
+                        <h3 data-i18n="transit_directory_title">Approved Transit Tariffs & Guidelines</h3>
+                    </div>
+                    <div class="transit-directory-grid">
+                        <div class="directory-card glass-panel">
+                            <h4><i class="fa-solid fa-circle-info col-teal"></i> <span data-i18n="erick_fare_card">E-Rickshaw Rates</span></h4>
+                            <p data-i18n="erick_fares_desc">Government approved fixed tariffs within 10km of Mela area. Report overcharging to 112.</p>
+                            <table class="transit-table">
+                                <tr><td>Up to 3 km</td><td class="bold">₹20 / passenger</td></tr>
+                                <tr><td>3 to 6 km</td><td class="bold">₹35 / passenger</td></tr>
+                                <tr><td>6 to 10 km</td><td class="bold">₹50 / passenger</td></tr>
+                            </table>
+                        </div>
+                        <div class="directory-card glass-panel">
+                            <h4><i class="fa-solid fa-bus col-orange"></i> <span data-i18n="mela_shuttle_card">Mela Shuttle Routes</span></h4>
+                            <p data-i18n="mela_shuttles_desc">Free government shuttle buses operate 24/7 from railway stations and outer parkings straight to Mela entry points.</p>
+                            <table class="transit-table">
+                                <tr><td>Route 1A</td><td>PRYJ Junction ↔ Sector 1 Gate</td></tr>
+                                <tr><td>Route 2B</td><td>Jhunsi Parking ↔ Sector 11 Camp</td></tr>
+                                <tr><td>Route 3C</td><td>Arail Parking ↔ Triveni Sangam</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: SHAHI SNAN DATES & CALENDAR -->
+            <section id="section-calendar" class="nav-section">
+                <div class="calendar-intro glass-panel">
+                    <h3 data-i18n="calendar_header">Shahi Snan & Auspicious Dates</h3>
+                    <p data-i18n="calendar_desc">Mark these primary bathing dates for Mahakumbh 2028. Plan your travels and bathing times accordingly.</p>
+                </div>
+
+                <div class="calendar-list" id="calendarList">
+                    <!-- Loaded dynamically via app.js -->
+                </div>
+            </section>
+
+            <!-- SECTION 5: SERVICES, AMENITIES & STAYING -->
+            <section id="section-services" class="nav-section">
+                <div class="services-header glass-panel">
+                    <h3 data-i18n="services_header">Mela Amenities & Staying Guide</h3>
+                    <p data-i18n="services_desc">Find ashrams, Akharas, free food (Bhandaras), police camps, and sanitation stations in your sector.</p>
+                    
+                    <div class="service-filters" id="serviceFilters">
+                        <button class="filter-chip active" data-filter="all">
+                            <span data-i18n="fl_all">All Services</span>
+                        </button>
+                        <button class="filter-chip" data-filter="tent">
+                            <i class="fa-solid fa-tent"></i> <span data-i18n="fl_tents">Tents / Stay</span>
+                        </button>
+                        <button class="filter-chip" data-filter="food">
+                            <i class="fa-solid fa-bowl-rice"></i> <span data-i18n="fl_food">Bhandara (Food)</span>
+                        </button>
+                        <button class="filter-chip" data-filter="medical">
+                            <i class="fa-solid fa-kit-medical"></i> <span data-i18n="fl_medical">Medical</span>
+                        </button>
+                        <button class="filter-chip" data-filter="toilet">
+                            <i class="fa-solid fa-restroom"></i> <span data-i18n="fl_toilet">Toilets</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Loaded dynamically via app.js -->
+                </div>
+            </section>
+
+            <!-- SECTION 6: SOS & EMERGENCY CONTROL -->
+            <section id="section-sos" class="nav-section">
+                <div class="sos-alert-card glass-panel">
+                    <div class="sos-glow-ring">
+                        <button class="sos-trigger-btn" id="sosTrigger">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span>SOS</span>
+                        </button>
+                    </div>
+                    <div class="sos-warning-text">
+                        <h3 data-i18n="sos_card_title">EMERGENCY SOS</h3>
+                        <p data-i18n="sos_card_desc">Tap the button above to broadcast your location to emergency teams and play a loud warning beacon.</p>
+                    </div>
+                    
+                    <div class="siren-control-area">
+                        <button class="secondary-btn btn-siren" id="sirenBtn">
+                            <i class="fa-solid fa-volume-high"></i> <span data-i18n="play_siren">Play Safety Siren</span>
+                        </button>
+                    </div>
+
+                    <div class="sos-toast hidden" id="sosToast">
+                        <div class="toast-spinner"></div>
+                        <div class="toast-content">
+                            <strong data-i18n="sos_toast_title">Transmitting Distress Call...</strong>
+                            <p id="sosToastCoords">Location: Sector 4 (X: 280, Y: 125)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <h3 data-i18n="em_contacts_title">Direct Helpline Dialers</h3>
+                </div>
+                <div class="contact-list glass-panel">
+                    <div class="contact-item">
+                        <div class="contact-icon back-red">
+                            <i class="fa-solid fa-truck-medical"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-i18n="em_amb_title">Medical Ambulance</h4>
+                            <span>108 / 102</span>
+                        </div>
+                        <a href="tel:108" class="dial-btn"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon back-blue">
+                            <i class="fa-solid fa-building-shield"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-i18n="em_pol_title">Mela Security / Police</h4>
+                            <span>112 / 100</span>
+                        </div>
+                        <a href="tel:112" class="dial-btn"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon back-orange">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-i18n="em_ctrl_title">Mela Control Command HQs</h4>
+                            <span>+91-532-2430280</span>
+                        </div>
+                        <a href="tel:+915322430280" class="dial-btn"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon back-teal">
+                            <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-i18n="em_lost_title">Lost & Found Helpline</h4>
+                            <span>1920</span>
+                        </div>
+                        <a href="tel:1920" class="dial-btn"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+
+                <!-- Family Search Dashboard -->
+                <div class="section-title">
+                    <h3 data-i18n="family_search_title">Find Lost Family Registry</h3>
+                </div>
+                <div class="family-search-panel glass-panel">
+                    <p data-i18n="family_search_desc">Search for names reported to the Lost & Found central registry (updated live).</p>
+                    <div class="search-box">
+                        <input type="text" id="familySearchInput" placeholder="Enter family member's name..." data-i18n-placeholder="family_search_placeholder">
+                        <button class="primary-btn" id="familySearchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    <div class="search-results hidden" id="familySearchResults">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <h3 data-i18n="safety_guides_title">Emergency & Safety Guides</h3>
+                </div>
+                <div class="guides-accordion">
+                    <div class="accordion-item glass-panel">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h4 data-i18n="guide_1_title">Stampede Prevention & Safety</h4>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p data-i18n="guide_1_content">1. Always move with the flow of the crowd. Do not walk against it.
+2. Keep your hands folded in front of your chest like a boxer to create breathing space.
+3. If you drop something, do not bend down to pick it up in a dense crowd.
+4. If you fall, curl into a ball, cover your head with your hands, and protect your chest.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item glass-panel">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h4 data-i18n="guide_2_title">Heat & Exhaustion First Aid</h4>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p data-i18n="guide_2_content">1. Drink water and ORS packets regularly, even if you are not thirsty.
+2. Find shade immediately if you experience dizziness, headache, or excessive sweating.
+3. Loosen tight clothing and apply cool water to the skin.
+4. Contact the nearest medical booth or dial 108 if symptoms worsen.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="app-nav">
+            <button class="nav-btn active" onclick="switchTab('dashboard')">
+                <i class="fa-solid fa-house-chimney"></i>
+                <span data-i18n="nav_home">Home</span>
+            </button>
+            <button class="nav-btn" onclick="switchTab('chat')">
+                <i class="fa-solid fa-comments"></i>
+                <span data-i18n="nav_chat">Sangam AI</span>
+            </button>
+            <button class="nav-btn" onclick="switchTab('map')">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span data-i18n="nav_map">Navigator</span>
+            </button>
+            <button class="nav-btn" onclick="switchTab('calendar')">
+                <i class="fa-solid fa-calendar-day"></i>
+                <span data-i18n="nav_calendar">Calendar</span>
+            </button>
+            <button class="nav-btn" onclick="switchTab('services')">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+                <span data-i18n="nav_services">Services</span>
+            </button>
+            <button class="nav-btn nav-btn-sos" onclick="switchTab('sos')">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span>SOS</span>
+            </button>
+        </nav>
+
+    </div>
+
+    <audio id="sirenAudio" loop src="https://assets.mixkit.co/active_storage/sfx/951/951-84.wav"></audio>
+    <script src="app.js"></script>
+</body>
+</html>
