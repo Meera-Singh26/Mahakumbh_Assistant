@@ -74,7 +74,6 @@ Respects Motion Preferences
 - Touch-friendly interface
 - Fast load times (<2 seconds)
 
-
 ##  Technology Stack
 
 | Component | Technology |
