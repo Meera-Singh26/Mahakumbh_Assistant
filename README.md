@@ -13,7 +13,6 @@ A comprehensive digital assistant for pilgrims attending the Mahakumbh festival.
 
  2. Accommodation Directory
 | Type | Price | Capacity | Status |
-|------|-------|----------|--------|
 | Luxury Tent City | ₹2000-5000/night | 2-4 persons | Available |
 | Mid-Range Ashram | ₹500-1000/night | 4-6 persons | Available |
 | Budget Dormitory | ₹200-300/night | 8-10 persons | Limited |
